@@ -13,4 +13,16 @@ fn main() {
     println!("value of y after modifying is {y}");
     const Z: u32 = 30; //constant, cannot be used with mut and requires explicit data types, uppercase by convention
     println!("value of Z is {Z}");
+
+    let spaces = "   ";
+    let spaces = spaces.len(); //this works, but if we use mut it wont becuse mut does not allow use to mutate datatypes
+    println!("value of spaces is {spaces}");
+
+    //Data Types
+    let num: u8 = 255; //usigned 8 bit number, range 0 to 255, 256 will result in overflow
+                       //unsigned integer  data types are u8, u16, u32, u64, u128, usize is specific to machine architecture
+    let num2: i8 = -128; //signed 8 bit integer, range -128 to 127
+                         //unsinged integer data types are i8, i16, i32, i128, isize is specific to machine architecture
+    let num3: f32 = 3.14; //floating point number
+    println!("{}, {}, {}", num, num2, num3);
 }
