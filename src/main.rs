@@ -11,10 +11,28 @@ fn change(s: &mut String){
     s.push_str(", world");
 }
 
-fn dangle() -> &String {
-    let s = String::from("dangle");
-    &s //throws error as s is deallocated after this function
+// fn dangle() -> &String {
+//     let s = String::from("dangle");
+//     &s //throws error as s is deallocated after this function
+// }
+
+fn no_dangle() -> String {
+    let s = String::from("no dangle");
+    s
 }
+
+//function that returns length of first word
+fn first_word(s: &String) -> usize {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return i;
+        }
+    }
+    s.len()
+}
+
 
 fn main() {
     let _a = 10; //stays in scope of main()
@@ -94,4 +112,24 @@ fn main() {
     
     //let reference = dangle();
     //println!("{reference}");
+
+    let reference = no_dangle();
+    println!("{reference}");
+
+    //slices
+    let s = String::from("Hello, world");
+    println!("{}", first_word(&s));
+
+    //string slices
+
+    let hello = &s[0..5];
+    let world = &s[6..12];
+    let len = s.len();
+    let llo = &s[2..len];
+    let full = &s[..];
+    println!("{hello}{world} using splices, {llo}, {full}");
+
+    //array slices
+    let a = [1, 2, 3, 4, 5, 6];
+    let slice = &a[1..3];
 }
