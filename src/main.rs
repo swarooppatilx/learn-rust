@@ -3,6 +3,19 @@ fn calculate_length(s: String) -> (String, usize) {
  (s, length) //multiple returns
 }
 
+fn calculate_length_by_ref(s: &String) -> usize {
+    s.len()
+}
+
+fn change(s: &mut String){
+    s.push_str(", world");
+}
+
+fn dangle() -> &String {
+    let s = String::from("dangle");
+    &s //throws error as s is deallocated after this function
+}
+
 fn main() {
     let _a = 10; //stays in scope of main()
     {
@@ -43,4 +56,42 @@ fn main() {
     let s1 = String::from("abc");
     let (s1, len) = calculate_length(s1);
     println!("The length of '{s1}' is {len}");
+    println!("The length of '{s1}' using reference is {}", calculate_length_by_ref(&s1));
+
+    //mutable references
+    //similar to variables, references are immutable by default
+
+    let mut s = String::from("Hello in mutable reference");
+    change(&mut s); //mutable reference, throws error if we try to use immutable reference
+    println!("{s}");
+
+    //multiple mutable references
+    let mut s = String::from("Hello");
+    let r1 = &mut s;
+    //let r2 = &mut s; //throws error as we cannot have multiple mutable references
+    //println!("{r1}, {r2}");
+
+    //use scope to avoid multiple mutable references
+    let mut s = String::from("Hello");
+    {
+        let r1 = &mut s;
+        println!("{r1} in scoped reference");
+    }
+    let r2 = &mut s;
+    println!("{r2} in second reference");
+
+    //combination of mutable and immutable references
+    let mut s = String::from("Hello");
+    let r1 = &s;
+    let r2 = &s;
+    //let r3 = &mut s; //throws error as we cannot have mutable reference when we have immutable references
+    println!("{r1}, {r2}"); //no problem in having multiple immutable references
+
+    let r3 = &mut s;
+    println!("{r3}"); //no problem in having mutable reference after dropping immutable references
+
+    //dangling references
+    
+    //let reference = dangle();
+    //println!("{reference}");
 }
