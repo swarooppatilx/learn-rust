@@ -34,4 +34,32 @@ fn main() {
     let truncated = -5 / 3; //results in -1
     let remainder = 69 % 2;
     println!("sum : {sum}, diff: {diff}, product: {product}, quotient: {quotient}, truncated: {truncated}, remainder: {remainder}");
+
+    //Boolean types
+    let t = true;
+    let f: bool = false;
+    println!("t: {t}, f: {f}");
+
+    //Character
+
+    let c = 'z';
+    let z: char = 'Z';
+    let droplets = '💦';
+    println!("c: {c}, z: {z}, droplets: {droplets}");
+
+    //Compund types
+
+    //Tuple
+    let tup: (i32, f64, u8) = (500, 1000.0, 69);
+    println!("tup: {}", tup.0); // accessing tuple by positional indexing, format string does not support printing it
+    let (x, y, z) = tup;
+    println!("x: {x}, y: {y}, z: {z}");
+
+    //Array
+
+    let arr = [1, 2, 3, 4];
+    let arr: [i8; 4] = [1, 2, 3, 4]; //using datatype
+    let arr = [0; 4]; //initialize array of size 4 with all elements 0
+    let arr = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    println!("{}", arr[0]); 
 }
