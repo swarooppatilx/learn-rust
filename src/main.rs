@@ -11,7 +11,10 @@ fn main() {
         io::stdin()
             .read_line(&mut guess)
             .expect("Failed to readline");
-        let guess: u32 = guess.trim().parse().expect("Please type a number"); //shadow variable of type 32 bit unsigned integer
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue, //ask again for user input if the input is not a number
+        };
         println!("Your guess: {}", guess);
         match guess.cmp(&secret_number) {
             Ordering::Less => println!("Too small"),
