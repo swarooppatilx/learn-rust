@@ -1,3 +1,5 @@
+use std::io;
+
 fn main() {
     let x = 5; //immutable variable, but can be shadowed
     println!("value of x is {x}");
@@ -61,5 +63,17 @@ fn main() {
     let arr: [i8; 4] = [1, 2, 3, 4]; //using datatype
     let arr = [0; 4]; //initialize array of size 4 with all elements 0
     let arr = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-    println!("{}", arr[0]); 
+    println!("{}", arr[0]);
+
+    //Accessing array and handing errors
+
+    let arr = [1, 2, 3, 4];
+    println!("please enter an array index: ");
+    let mut index = String::new();
+    io::stdin()
+        .read_line(&mut index)
+        .expect("Failed to readline");
+    let index: usize = index.trim().parse().expect("Please enter a number");
+    let element = arr[index];
+    println!("The value of element at index {index} is {element}");
 }
