@@ -1,5 +1,16 @@
 use std::io;
 
+fn labeled_measurement(value: i32, unit: char){
+    println!("The measurement is {value}{unit}");
+}
+
+fn five() -> u8 {
+    5
+} 
+
+fn plus_one(x: u8) -> u8 {
+    x + 1
+}
 fn main() {
     let x = 5; //immutable variable, but can be shadowed
     println!("value of x is {x}");
@@ -76,4 +87,21 @@ fn main() {
     let index: usize = index.trim().parse().expect("Please enter a number");
     let element = arr[index];
     println!("The value of element at index {index} is {element}");
+
+    //Functions
+    labeled_measurement(34, 'D');
+
+    //Functions with return value
+    let five = five();
+    let plus = plus_one(five);
+    println!("return value of function five() is {five} and plus_one() is {plus}");
+
+    //Expressions
+
+    let y = {
+    let x = 10;
+    x + 1  //no semicolon indicates this statement returns a value
+    };
+
+    println!("result of expression is {y}");
 }
