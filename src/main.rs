@@ -130,4 +130,8 @@ fn main() {
     for element in a {
         println!("the element in a is {element}");
     }
+    //Iterator and rev()
+    for element in (1..5).rev() {
+        println!("the element in a.rev() is {element}");
+    }
 }
