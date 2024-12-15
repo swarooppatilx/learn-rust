@@ -25,4 +25,13 @@ fn main() {
                          //unsinged integer data types are i8, i16, i32, i128, isize is specific to machine architecture
     let num3: f32 = 3.14; //floating point number
     println!("{}, {}, {}", num, num2, num3);
+
+    //Numeric Operations
+    let sum = 5 + 10;
+    let diff = 69.54 - 20.10;
+    let product = 6 * 9;
+    let quotient = 69 / 3;
+    let truncated = -5 / 3; //results in -1
+    let remainder = 69 % 2;
+    println!("sum : {sum}, diff: {diff}, product: {product}, quotient: {quotient}, truncated: {truncated}, remainder: {remainder}");
 }
