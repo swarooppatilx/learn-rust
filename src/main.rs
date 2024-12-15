@@ -1,13 +1,15 @@
 use std::io;
+use rand::Rng;
+
 
 fn main() {
     println!("Guess the number!");
+    let secret_number = rand::thread_rng().gen_range(1..=69);
     println!("Please input your guess: ");
-    let mut guess = String::new(); //mutable variable in rust
-    let apple = 69; //immutable variable or constant in other languages, by default variables are immutable in rust pretty wierd!
+    let mut guess = String::new();
     io::stdin()
         .read_line(&mut guess)
         .expect("Failed to readline");
     println!("You guessed {}", guess);
-    println!("The value of apple {apple}");
+    println!("The secret number is {secret_number}");
 }
