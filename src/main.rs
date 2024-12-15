@@ -1,12 +1,12 @@
 use std::io;
 
-fn labeled_measurement(value: i32, unit: char){
+fn labeled_measurement(value: i32, unit: char) {
     println!("The measurement is {value}{unit}");
 }
 
 fn five() -> u8 {
     5
-} 
+}
 
 fn plus_one(x: u8) -> u8 {
     x + 1
@@ -99,9 +99,35 @@ fn main() {
     //Expressions
 
     let y = {
-    let x = 10;
-    x + 1  //no semicolon indicates this statement returns a value
+        let x = 10;
+        x + 1 //no semicolon indicates this statement returns a value
     };
 
     println!("result of expression is {y}");
+
+    //Control Flow
+
+    let age = 18;
+    if age <= 18 {
+        //other comparisons like ==, !=, <, >, <=, >=
+        println!("you are a minor");
+    } else {
+        println!("you are an adult");
+    }
+
+    //Loops
+
+    let mut count = 0;
+    loop {
+        println!("count is {count}");
+        count += 1;
+        if count > 10 {
+            break;
+        }
+    }
+
+    let a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    for element in a {
+        println!("the element in a is {element}");
+    }
 }
